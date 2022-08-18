@@ -1,16 +1,15 @@
-### Hi there 👋
+<h2> _NiRuX_ </h2>
+<img align='right' src='https://c.tenor.com/dHk-LfzHrtwAAAAi/linux-computer.gif' width='200"'>
 
-<!--
-**NiRuX/NiRuX** is a ✨ _special_ ✨ repository because its `README.md` (this file) appears on your GitHub profile.
+My name is Kyle and I enjoy to tinker and improve my knowlege of different technologies.
+## ⚡ Interests
+- Linux and GNU Bash Scripting
+- Programming Tech under Java and Kotlin
+- HTML, CSS and making things beautiful.
+- Flutter/Kotlin because why not.
+- A little bit of Pen Testing.
 
-Here are some ideas to get you started:
-
-- 🔭 I’m currently working on ...
-- 🌱 I’m currently learning ...
-- 👯 I’m looking to collaborate on ...
-- 🤔 I’m looking for help with ...
-- 💬 Ask me about ...
-- 📫 How to reach me: ...
-- 😄 Pronouns: ...
-- ⚡ Fun fact: ...
--->
+## Socials
+- 💬 Let's connect.
+- 🔔 Discord:- [Discord](https://discord.gg/invite/CJzTJsrFpU).
+- ⚡ LinkedIn:- [LinkedIn](https://www.linkedin.com/in/kyle-perez-b785341a4/).
