@@ -2,11 +2,13 @@
 <img align='right' src='https://c.tenor.com/dHk-LfzHrtwAAAAi/linux-computer.gif' width='200"'>
 
 My name is Kyle and I enjoy to tinker and improve my knowlege of different technologies.
+
 ## ⚡ Interests
-- Linux and GNU Bash Scripting
-- Programming Tech under Java and Kotlin
+- Linux and Open Source Operating Systems.
+- Bash Scripting
+- Programming.
 - HTML, CSS and making things beautiful.
-- Flutter/Kotlin because why not.
+- Flutter/Kotlin.
 - A little bit of Pen Testing.
 
 ## Socials
