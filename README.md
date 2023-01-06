@@ -1,5 +1,6 @@
 <h2> _NiRuX_ </h2>
-<img align='right' src='https://raw.githubusercontent.com/NiRuX/NiRuX/main/Clippy/Of9cm1.gif' width='200"'>
+<img align='right' src='https://raw.githubusercontent.com/NiRuX/NiRuX/main/Tux/68747470733a2f2f632e74656e6f722e636f6d2f64486b2d4c667a4872747741414141692f6c696e75782d636f6d70757465722e676966.gif' width='200"'>
+
 
 My name is Kyle and I enjoy to tinker and improve my knowlege of different technologies.
 
