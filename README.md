@@ -9,7 +9,7 @@ Hello, I'm a friendly nerd who likes to tinker.
 - Bash/Zsh Scripting
 - Programming & Modding.
 - HTML, CSS and making things beautiful.
-- Flutter/Kotlin.
+- UI/UX Addict.
 
 ## Socials
 - 💬 Let's connect.
