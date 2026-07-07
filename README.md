@@ -16,11 +16,13 @@
 
 ### ⚡ About Me
 
-- 🖥️ &nbsp;I tinker with **Windows, Linux and Open Source** operating systems
-- 🐚 &nbsp;I script in **Bash / Zsh**
-- 💻 &nbsp;I enjoy **programming & modding**
-- 🎨 &nbsp;I build with **HTML & CSS**, and love making things beautiful
-- ✨ &nbsp;I'm a bit of a **UI/UX addict**
+Give me a machine and I'll find a reason to take it apart. I bounce between Windows, Linux, and macOS depending on what I'm breaking that week, and I'm just as happy in a terminal as I am obsessing over a pixel-perfect UI.
+
+- 🖥️ &nbsp;**Windows, Linux & macOS** — I tinker across all three, and open source is home turf
+- 🐚 &nbsp;**Bash / Zsh** scripting to automate the boring stuff
+- 🔧 &nbsp;**Programming & modding** — if it has settings, I've probably poked at them
+- 🎨 &nbsp;Building with **HTML & CSS**, chasing clean and functional design
+- ✨ &nbsp;A certified **UI/UX addict** — I notice bad spacing before I notice bad code
 
 <br clear="right">
 
@@ -30,6 +32,7 @@
 
 ![Linux](https://img.shields.io/badge/Linux-FCC624?style=for-the-badge&logo=linux&logoColor=black)
 ![Windows](https://img.shields.io/badge/Windows-0078D6?style=for-the-badge&logo=windows&logoColor=white)
+![macOS](https://img.shields.io/badge/macOS-000000?style=for-the-badge&logo=macos&logoColor=white)
 
 **Scripting**
 
@@ -40,21 +43,6 @@
 
 ![HTML5](https://img.shields.io/badge/HTML5-E34F26?style=for-the-badge&logo=html5&logoColor=white)
 ![CSS3](https://img.shields.io/badge/CSS3-1572B6?style=for-the-badge&logo=css3&logoColor=white)
-
-<br>
-
-### 📊 GitHub Stats
-
-<div align="center">
-
-<img height="165" src="https://github-readme-stats.vercel.app/api?username=niruxx&show_icons=true&theme=radical&hide_border=true&count_private=true" />
-<img height="165" src="https://github-readme-stats.vercel.app/api/top-langs/?username=niruxx&layout=compact&theme=radical&hide_border=true" />
-
-<img src="https://github-readme-streak-stats.herokuapp.com/?user=niruxx&theme=radical&hide_border=true" />
-
-<img src="https://github-profile-trophy.vercel.app/?username=niruxx&theme=radical&no-frame=true&no-bg=true&row=1&column=6" />
-
-</div>
 
 <br>
 
