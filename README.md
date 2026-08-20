@@ -1,17 +1,8 @@
 <div align="center">
 
 <img src="https://capsule-render.vercel.app/api?type=rect&color=0:4285F4,33:EA4335,66:FBBC04,100:34A853&height=6&section=header" width="100%" alt="" />
-
 <br>
-
-<img src="https://img.shields.io/badge/Photos-F1F3F4?style=for-the-badge&logo=googlephotos&logoColor=4285F4&labelColor=F1F3F4" alt="Photos" />
-&nbsp;
-<img src="https://img.shields.io/badge/Search_niruxxdaboi%27s_photos-F1F3F4?style=for-the-badge&logo=google&logoColor=4285F4&labelColor=F1F3F4" alt="Search" />
-&nbsp;
-<img src="https://img.shields.io/badge/K-EA4335?style=for-the-badge&labelColor=EA4335" alt="Account" />
-
 <br><br>
-
 <img src="https://readme-typing-svg.demolab.com/?font=Roboto&weight=700&size=28&duration=3000&pause=1200&color=4285F4&center=true&vCenter=true&width=560&lines=Hi+there%2C+I'm+niruxxdaboi+%F0%9F%91%8B;A+friendly+nerd+who+likes+to+tinker;Linux+%2B+Windows+%2B+Open+Source;A+bit+of+a+UI%2FUX+addict+%E2%9C%A8" alt="Typing SVG" />
 
 <br>
@@ -21,11 +12,6 @@
 <a href="https://www.linkedin.com/in/kyle-perez-b785341a4/"><img src="https://img.shields.io/badge/LinkedIn-0A66C2?style=for-the-badge&logo=linkedin&logoColor=white" alt="LinkedIn" /></a>
 
 <br>
-
-<img src="https://img.shields.io/badge/%F0%9F%93%B7_Photos-4285F4?style=flat-square&labelColor=4285F4&color=4285F4" alt="Photos" />
-<img src="https://img.shields.io/badge/%E2%9C%A8_Memories-F1F3F4?style=flat-square&labelColor=F1F3F4&color=F1F3F4" alt="Memories" />
-<img src="https://img.shields.io/badge/%F0%9F%93%81_Albums-F1F3F4?style=flat-square&labelColor=F1F3F4&color=F1F3F4" alt="Albums" />
-<img src="https://img.shields.io/badge/%F0%9F%91%A5_Sharing-F1F3F4?style=flat-square&labelColor=F1F3F4&color=F1F3F4" alt="Sharing" />
 
 </div>
 
@@ -41,7 +27,7 @@
 
 ### ⚡ About Me
 
-Give me a machine and I'll find a reason to take it apart. I bounce between Windows, Linux, and macOS depending on what I'm breaking that week, and I'm just as happy in a terminal as I am obsessing over a pixel-perfect UI.
+Give me a machine and I'll find a reason to take it apart. I bounce between Windows & Linux, depending on what I'm breaking that week, and I'm just as happy in a terminal as I am obsessing over a pixel-perfect UI.
 
 ```bash
 $ whoami
@@ -71,7 +57,7 @@ niruxxdaboi — linux tinkerer, shell scripter, pixel nitpicker
 
 <img src="https://img.shields.io/badge/Multi--OS_Tinkerer-4285F4?style=for-the-badge&logo=linux&logoColor=white" alt="Multi-OS Tinkerer" />
 
-Windows, Linux & macOS — I break things across all three, and open source is home turf.
+Windows & Linux — I break things across all three, and open source is home turf.
 
 <sub>`3 devices` &nbsp;·&nbsp; `updated daily`</sub>
 
