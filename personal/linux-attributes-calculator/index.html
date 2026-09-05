@@ -1,0 +1,611 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>chmod calculator</title>
+<meta name="description" content="Visually build Linux file permissions and get the octal or symbolic chmod value.">
+<style>
+  :root {
+    color-scheme: light dark;
+    --bg: #f4f5f7;
+    --blob-1: #d6ddff;
+    --blob-2: #fbd6ea;
+    --blob-opacity: .8;
+    --card: #ffffff;
+    --text: #1a1d29;
+    --muted: #6b7280;
+    --border: #e5e7eb;
+    --accent: #6366f1;
+    --accent-strong: #4f46e5;
+    --accent-soft: #eef0ff;
+    --danger: #dc2626;
+    --danger-soft: #fee2e2;
+    --mono: "SFMono-Regular", Consolas, "Liberation Mono", Menlo, monospace;
+    --sans: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+    --radius: 16px;
+    --shadow: 0 1px 2px rgba(16,24,40,.04), 0 12px 32px -8px rgba(16,24,40,.12);
+  }
+  :root[data-theme="dark"] {
+    --bg: #0f1115;
+    --blob-1: #2a2f52;
+    --blob-2: #3a2438;
+    --blob-opacity: .6;
+    --card: #171923;
+    --text: #f1f2f6;
+    --muted: #9498a3;
+    --border: #2a2d3a;
+    --accent: #818cf8;
+    --accent-strong: #a5b4fc;
+    --accent-soft: #23253a;
+    --danger: #f87171;
+    --danger-soft: #3a2020;
+    --shadow: 0 1px 2px rgba(0,0,0,.3), 0 12px 32px -8px rgba(0,0,0,.5);
+  }
+  * { box-sizing: border-box; }
+  html, body { height: 100%; }
+  body {
+    margin: 0;
+    font-family: var(--sans);
+    color: var(--text);
+    background: var(--bg);
+    -webkit-font-smoothing: antialiased;
+  }
+  .bg-blobs {
+    position: fixed;
+    inset: 0;
+    z-index: -1;
+    overflow: hidden;
+  }
+  .blob {
+    position: absolute;
+    border-radius: 50%;
+    filter: blur(70px);
+    opacity: var(--blob-opacity);
+    will-change: transform;
+  }
+  .blob-1 {
+    top: -25vmax;
+    left: -20vmax;
+    width: 75vmax;
+    height: 75vmax;
+    background: var(--blob-1);
+    animation: drift-1 26s ease-in-out infinite alternate;
+  }
+  .blob-2 {
+    top: -20vmax;
+    right: -25vmax;
+    width: 70vmax;
+    height: 70vmax;
+    background: var(--blob-2);
+    animation: drift-2 22s ease-in-out infinite alternate;
+  }
+  @keyframes drift-1 {
+    0%   { transform: translate(0, 0) scale(1); }
+    50%  { transform: translate(10vmax, 18vmax) scale(1.15); }
+    100% { transform: translate(-6vmax, 24vmax) scale(1.05); }
+  }
+  @keyframes drift-2 {
+    0%   { transform: translate(0, 0) scale(1); }
+    50%  { transform: translate(-14vmax, 20vmax) scale(1.1); }
+    100% { transform: translate(-8vmax, 32vmax) scale(0.95); }
+  }
+  @media (prefers-reduced-motion: reduce) {
+    .blob-1, .blob-2 { animation: none; }
+  }
+  .page {
+    max-width: 760px;
+    margin: 0 auto;
+    padding: 32px 20px 64px;
+  }
+  .top-bar {
+    display: flex;
+    justify-content: flex-end;
+  }
+  #theme-toggle {
+    border: 1px solid var(--border);
+    background: var(--card);
+    color: var(--text);
+    border-radius: 999px;
+    width: 40px;
+    height: 40px;
+    font-size: 18px;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    box-shadow: var(--shadow);
+    transition: transform .15s ease;
+  }
+  #theme-toggle:hover { transform: translateY(-1px); }
+  header.hero {
+    text-align: center;
+    padding: 12px 0 36px;
+  }
+  header.hero h1 {
+    font-size: clamp(2rem, 5vw, 2.75rem);
+    font-weight: 800;
+    margin: 0 0 10px;
+    letter-spacing: -0.03em;
+  }
+  header.hero p {
+    margin: 0;
+    color: var(--muted);
+    font-size: 1.05rem;
+  }
+  .card {
+    background: var(--card);
+    border: 1px solid var(--border);
+    border-radius: var(--radius);
+    box-shadow: var(--shadow);
+    padding: 32px;
+  }
+  .perm-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 20px;
+  }
+  .perm-class {
+    border: 1px solid var(--border);
+    border-radius: 12px;
+    padding: 18px 16px;
+    background: var(--accent-soft);
+  }
+  .perm-class h2 {
+    margin: 0 0 14px;
+    font-size: 1.05rem;
+    font-weight: 700;
+    text-align: center;
+  }
+  .switch-row {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 10px;
+    padding: 8px 2px;
+    font-size: .95rem;
+    cursor: pointer;
+    user-select: none;
+  }
+  .switch-row + .switch-row { border-top: 1px solid var(--border); }
+  .switch-row input {
+    position: absolute;
+    opacity: 0;
+    width: 1px;
+    height: 1px;
+  }
+  .switch {
+    position: relative;
+    flex: 0 0 auto;
+    width: 40px;
+    height: 22px;
+    border-radius: 999px;
+    background: var(--border);
+    transition: background .15s ease;
+  }
+  .switch::after {
+    content: "";
+    position: absolute;
+    top: 2px;
+    left: 2px;
+    width: 18px;
+    height: 18px;
+    border-radius: 50%;
+    background: #fff;
+    box-shadow: 0 1px 3px rgba(0,0,0,.3);
+    transition: transform .15s ease;
+  }
+  .switch-row input:checked + .switch {
+    background: var(--accent);
+  }
+  .switch-row input:checked + .switch::after {
+    transform: translateX(18px);
+  }
+  .switch-row input:focus-visible + .switch {
+    outline: 2px solid var(--accent);
+    outline-offset: 2px;
+  }
+  .output {
+    margin-top: 28px;
+    display: grid;
+    gap: 14px;
+  }
+  .output-row label {
+    display: block;
+    font-size: .8rem;
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: .06em;
+    color: var(--muted);
+    margin-bottom: 6px;
+  }
+  .output-row input {
+    width: 100%;
+    font-family: var(--mono);
+    font-size: 1.4rem;
+    letter-spacing: .04em;
+    padding: 12px 14px;
+    border-radius: 10px;
+    border: 1px solid var(--border);
+    background: var(--bg);
+    color: var(--text);
+    transition: border-color .15s ease, box-shadow .15s ease;
+  }
+  .output-row input:focus {
+    outline: none;
+    border-color: var(--accent);
+    box-shadow: 0 0 0 3px var(--accent-soft);
+  }
+  .output-row.error input {
+    border-color: var(--danger);
+    background: var(--danger-soft);
+  }
+  .output-row .hint {
+    min-height: 16px;
+    font-size: .78rem;
+    color: var(--danger);
+    margin-top: 4px;
+  }
+  .command-preview {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    background: var(--bg);
+    border: 1px solid var(--border);
+    border-radius: 10px;
+    padding: 10px 10px 10px 14px;
+  }
+  .command-preview code {
+    flex: 1;
+    font-family: var(--mono);
+    font-size: .95rem;
+    overflow-x: auto;
+    white-space: nowrap;
+  }
+  #copy-btn {
+    flex: 0 0 auto;
+    border: 1px solid var(--border);
+    background: var(--card);
+    color: var(--text);
+    padding: 8px 14px;
+    border-radius: 8px;
+    font-size: .85rem;
+    cursor: pointer;
+    transition: background .15s ease, border-color .15s ease;
+  }
+  #copy-btn:hover { border-color: var(--accent); color: var(--accent-strong); }
+  .presets {
+    margin-top: 22px;
+    display: flex;
+    flex-wrap: wrap;
+    gap: 8px;
+  }
+  .presets span.label {
+    font-size: .8rem;
+    color: var(--muted);
+    align-self: center;
+    margin-right: 4px;
+  }
+  .preset-btn {
+    border: 1px solid var(--border);
+    background: var(--bg);
+    color: var(--text);
+    font-family: var(--mono);
+    padding: 6px 12px;
+    border-radius: 999px;
+    font-size: .85rem;
+    cursor: pointer;
+    transition: background .15s ease, border-color .15s ease, color .15s ease;
+  }
+  .preset-btn:hover {
+    border-color: var(--accent);
+    color: var(--accent-strong);
+    background: var(--accent-soft);
+  }
+  section.info {
+    margin-top: 24px;
+  }
+  section.info details {
+    background: var(--card);
+    border: 1px solid var(--border);
+    border-radius: var(--radius);
+    padding: 18px 22px;
+    box-shadow: var(--shadow);
+  }
+  section.info summary {
+    cursor: pointer;
+    font-weight: 700;
+    font-size: 1.05rem;
+    outline: none;
+  }
+  section.info dl { margin: 16px 0 0; }
+  section.info dt {
+    font-weight: 700;
+    margin-top: 14px;
+    color: var(--accent-strong);
+  }
+  section.info dd {
+    margin: 4px 0 0;
+    color: var(--muted);
+    line-height: 1.55;
+  }
+  section.info samp {
+    font-family: var(--mono);
+    background: var(--accent-soft);
+    padding: 1px 6px;
+    border-radius: 5px;
+  }
+  @media (max-width: 640px) {
+    .perm-grid { grid-template-columns: 1fr; }
+    .card { padding: 24px 18px; }
+    .output-row input { font-size: 1.15rem; }
+  }
+</style>
+</head>
+<body>
+  <div class="bg-blobs" aria-hidden="true">
+    <div class="blob blob-1"></div>
+    <div class="blob blob-2"></div>
+  </div>
+  <div class="page">
+    <div class="top-bar">
+      <button id="theme-toggle" type="button" aria-label="Toggle dark mode">&#9789;</button>
+    </div>
+
+    <header class="hero">
+      <h1>chmod calculator</h1>
+      <p>Build Linux file permissions visually — read, write and execute for owner, group and public.</p>
+    </header>
+
+    <main class="card">
+      <form>
+        <div class="perm-grid">
+          <div class="perm-class">
+            <h2>Owner</h2>
+            <label class="switch-row">Read <input type="checkbox" class="m" id="c-o-r"><span class="switch"></span></label>
+            <label class="switch-row">Write <input type="checkbox" class="m" id="c-o-w"><span class="switch"></span></label>
+            <label class="switch-row">Execute <input type="checkbox" class="m" id="c-o-x"><span class="switch"></span></label>
+          </div>
+          <div class="perm-class">
+            <h2>Group</h2>
+            <label class="switch-row">Read <input type="checkbox" class="m" id="c-g-r"><span class="switch"></span></label>
+            <label class="switch-row">Write <input type="checkbox" class="m" id="c-g-w"><span class="switch"></span></label>
+            <label class="switch-row">Execute <input type="checkbox" class="m" id="c-g-x"><span class="switch"></span></label>
+          </div>
+          <div class="perm-class">
+            <h2>Public</h2>
+            <label class="switch-row">Read <input type="checkbox" class="m" id="c-p-r"><span class="switch"></span></label>
+            <label class="switch-row">Write <input type="checkbox" class="m" id="c-p-w"><span class="switch"></span></label>
+            <label class="switch-row">Execute <input type="checkbox" class="m" id="c-p-x"><span class="switch"></span></label>
+          </div>
+        </div>
+
+        <div class="output">
+          <div class="output-row" id="oct-row">
+            <label for="c-oct">Octal</label>
+            <input type="text" class="m" id="c-oct" placeholder="644" inputmode="numeric" maxlength="3" autocomplete="off">
+            <div class="hint" id="oct-hint"></div>
+          </div>
+          <div class="output-row" id="sym-row">
+            <label for="c-sym">Symbolic</label>
+            <input type="text" class="m" id="c-sym" placeholder="rw-r--r--" maxlength="10" autocomplete="off">
+            <div class="hint" id="sym-hint"></div>
+          </div>
+          <div class="command-preview">
+            <code id="cmd-preview">chmod 644 file</code>
+            <button id="copy-btn" type="button">Copy</button>
+          </div>
+        </div>
+
+        <div class="presets">
+          <span class="label">Common:</span>
+          <button class="preset-btn" type="button" data-preset="755">755</button>
+          <button class="preset-btn" type="button" data-preset="644">644</button>
+          <button class="preset-btn" type="button" data-preset="700">700</button>
+          <button class="preset-btn" type="button" data-preset="600">600</button>
+          <button class="preset-btn" type="button" data-preset="777">777</button>
+          <button class="preset-btn" type="button" data-preset="000">000</button>
+        </div>
+      </form>
+    </main>
+
+    <section class="info">
+      <details>
+        <summary>What is this?</summary>
+        <dl>
+          <dt>Define</dt>
+          <dd>Natural Chmod Tool is a free utility to calculate the numeric (octal) or symbolic value for a set of file or folder permissions on Linux servers.</dd>
+          <dt>Utility</dt>
+          <dd>Toggle the desired switches, or directly enter a valid numeric value (e.g. <samp>755</samp>) or symbolic notation (e.g. <samp>rwxr-xr-x</samp>) to see its value in the other formats.</dd>
+          <dt>Explanation</dt>
+          <dd>File permissions in the Linux file system are managed in three distinct user classes: owner, group and others/public. Each class can have read, write and execute permissions. A file permission can be represented in symbolic or numeric (octal) format.</dd>
+        </dl>
+      </details>
+    </section>
+  </div>
+
+  <script>
+    (function () {
+      "use strict";
+
+      var CLASSES = {
+        owner: ["c-o-r", "c-o-w", "c-o-x"],
+        group: ["c-g-r", "c-g-w", "c-g-x"],
+        public: ["c-p-r", "c-p-w", "c-p-x"]
+      };
+      var LETTERS = ["r", "w", "x"];
+      var WEIGHTS = [4, 2, 1];
+      var CLASS_ORDER = ["owner", "group", "public"];
+
+      var octInput = document.getElementById("c-oct");
+      var symInput = document.getElementById("c-sym");
+      var octRow = document.getElementById("oct-row");
+      var symRow = document.getElementById("sym-row");
+      var octHint = document.getElementById("oct-hint");
+      var symHint = document.getElementById("sym-hint");
+      var cmdPreview = document.getElementById("cmd-preview");
+      var copyBtn = document.getElementById("copy-btn");
+      var themeToggle = document.getElementById("theme-toggle");
+
+      function checkbox(id) { return document.getElementById(id); }
+
+      function readFromCheckboxes() {
+        var octal = "";
+        var symbol = "";
+        CLASS_ORDER.forEach(function (cls) {
+          var value = 0;
+          CLASSES[cls].forEach(function (id, i) {
+            if (checkbox(id).checked) {
+              value += WEIGHTS[i];
+              symbol += LETTERS[i];
+            } else {
+              symbol += "-";
+            }
+          });
+          octal += value;
+        });
+        return { octal: octal, symbol: symbol };
+      }
+
+      function applyOctalToCheckboxes(octal) {
+        CLASS_ORDER.forEach(function (cls, ci) {
+          var digit = parseInt(octal.charAt(ci), 10);
+          CLASSES[cls].forEach(function (id, i) {
+            checkbox(id).checked = (digit & WEIGHTS[i]) !== 0;
+          });
+        });
+      }
+
+      function applySymbolToCheckboxes(symbol) {
+        CLASS_ORDER.forEach(function (cls, ci) {
+          var chunk = symbol.substr(ci * 3, 3);
+          CLASSES[cls].forEach(function (id, i) {
+            checkbox(id).checked = chunk.charAt(i) === LETTERS[i];
+          });
+        });
+      }
+
+      function isValidOctal(v) { return /^[0-7]{3}$/.test(v); }
+      function isValidSymbol(v) {
+        var s = v.length === 10 ? v.slice(1) : v;
+        return /^([r-][w-][x-]){3}$/.test(s);
+      }
+
+      function setError(row, hint, message) {
+        row.classList.add("error");
+        hint.textContent = message;
+      }
+      function clearError(row, hint) {
+        row.classList.remove("error");
+        hint.textContent = "";
+      }
+
+      function updatePreview(octal) {
+        cmdPreview.textContent = "chmod " + (octal || "___") + " file";
+      }
+
+      function syncFromCheckboxes() {
+        var state = readFromCheckboxes();
+        octInput.value = state.octal;
+        symInput.value = state.symbol;
+        clearError(octRow, octHint);
+        clearError(symRow, symHint);
+        updatePreview(state.octal);
+      }
+
+      function syncFromOctal() {
+        var v = octInput.value.trim();
+        if (v === "") {
+          symInput.value = "";
+          clearError(octRow, octHint);
+          clearError(symRow, symHint);
+          updatePreview("");
+          return;
+        }
+        if (isValidOctal(v)) {
+          applyOctalToCheckboxes(v);
+          symInput.value = readFromCheckboxes().symbol;
+          clearError(octRow, octHint);
+          clearError(symRow, symHint);
+          updatePreview(v);
+        } else {
+          setError(octRow, octHint, "Enter three digits from 0-7, e.g. 644");
+          symInput.value = "";
+        }
+      }
+
+      function syncFromSymbol() {
+        var v = symInput.value.trim();
+        if (v === "") {
+          octInput.value = "";
+          clearError(octRow, octHint);
+          clearError(symRow, symHint);
+          updatePreview("");
+          return;
+        }
+        if (isValidSymbol(v)) {
+          var s = v.length === 10 ? v.slice(1) : v;
+          applySymbolToCheckboxes(s);
+          var octal = readFromCheckboxes().octal;
+          octInput.value = octal;
+          clearError(octRow, octHint);
+          clearError(symRow, symHint);
+          updatePreview(octal);
+        } else {
+          setError(symRow, symHint, "Enter 9 or 10 characters, e.g. rwxr-xr-x");
+          octInput.value = "";
+        }
+      }
+
+      Object.keys(CLASSES).forEach(function (cls) {
+        CLASSES[cls].forEach(function (id) {
+          checkbox(id).addEventListener("change", syncFromCheckboxes);
+        });
+      });
+      octInput.addEventListener("input", syncFromOctal);
+      symInput.addEventListener("input", syncFromSymbol);
+
+      document.querySelectorAll(".preset-btn").forEach(function (btn) {
+        btn.addEventListener("click", function () {
+          octInput.value = btn.getAttribute("data-preset");
+          syncFromOctal();
+        });
+      });
+
+      copyBtn.addEventListener("click", function () {
+        var text = cmdPreview.textContent;
+        var restore = copyBtn.textContent;
+        function done(ok) {
+          copyBtn.textContent = ok ? "Copied!" : "Copy failed";
+          setTimeout(function () { copyBtn.textContent = restore; }, 1400);
+        }
+        if (navigator.clipboard && navigator.clipboard.writeText) {
+          navigator.clipboard.writeText(text).then(function () { done(true); }, function () { done(false); });
+        } else {
+          done(false);
+        }
+      });
+
+      var THEME_KEY = "chmod-tool-theme";
+      function applyTheme(theme) {
+        document.documentElement.setAttribute("data-theme", theme);
+        themeToggle.textContent = theme === "dark" ? "☀" : "☽";
+      }
+      var stored = null;
+      try { stored = localStorage.getItem(THEME_KEY); } catch (e) {}
+      var prefersDark = window.matchMedia && window.matchMedia("(prefers-color-scheme: dark)").matches;
+      applyTheme(stored || (prefersDark ? "dark" : "light"));
+      themeToggle.addEventListener("click", function () {
+        var current = document.documentElement.getAttribute("data-theme");
+        var next = current === "dark" ? "light" : "dark";
+        applyTheme(next);
+        try { localStorage.setItem(THEME_KEY, next); } catch (e) {}
+      });
+
+      // initial state
+      octInput.value = "644";
+      syncFromOctal();
+    })();
+  </script>
+</body>
+</html>
