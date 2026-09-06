@@ -3,13 +3,14 @@
 <img src="https://capsule-render.vercel.app/api?type=rect&color=0:4285F4,33:EA4335,66:FBBC04,100:34A853&height=6&section=header" width="100%" alt="" />
 <br>
 <br><br>
-<img src="https://readme-typing-svg.demolab.com/?font=Roboto&weight=700&size=28&duration=3000&pause=1200&color=4285F4&center=true&vCenter=true&width=560&lines=Hi+there%2C+I'm+niruxxdaboi+%F0%9F%91%8B;A+friendly+nerd+who+likes+to+tinker;Linux+%2B+Windows+%2B+Open+Source;A+bit+of+a+UI%2FUX+addict+%E2%9C%A8" alt="Typing SVG" />
+<img src="https://readme-typing-svg.demolab.com/?font=Roboto&weight=700&size=28&duration=3000&pause=1200&color=4285F4&center=true&vCenter=true&width=600&lines=Hi+there%2C+I'm+niruxxdaboi+%F0%9F%91%8B;A+friendly+nerd+who+likes+to+tinker;Linux+%2B+Windows+%2B+Open+Source;A+bit+of+a+UI%2FUX+addict+%E2%9C%A8;Now+pairing+with+Claude+Code+%F0%9F%A4%96" alt="Typing SVG" />
 
 <br>
 
 <img src="https://komarev.com/ghpvc/?username=niruxx&color=4285F4&style=for-the-badge&label=VIEWS+THIS+MONTH" alt="Profile Views" />
 <a href="https://discord.gg/invite/CJzTJsrFpU"><img src="https://img.shields.io/badge/Discord-5865F2?style=for-the-badge&logo=discord&logoColor=white" alt="Discord" /></a>
 <a href="https://www.linkedin.com/in/kyle-perez-b785341a4/"><img src="https://img.shields.io/badge/LinkedIn-0A66C2?style=for-the-badge&logo=linkedin&logoColor=white" alt="LinkedIn" /></a>
+<a href="https://claude.com/claude-code"><img src="https://img.shields.io/badge/Built_with-Claude_Code-D97757?style=for-the-badge&logo=claude&logoColor=white" alt="Built with Claude Code" /></a>
 
 <br>
 
@@ -27,11 +28,11 @@
 
 ### ⚡ About Me
 
-Give me a machine and I'll find a reason to take it apart. I bounce between Windows & Linux, depending on what I'm breaking that week, and I'm just as happy in a terminal as I am obsessing over a pixel-perfect UI.
+Give me a machine and I'll find a reason to take it apart. I bounce between Windows & Linux, depending on what I'm breaking that week, and I'm just as happy in a terminal as I am obsessing over a pixel-perfect UI. Lately that also means pairing with AI tools like Claude to move faster without losing the details I care about.
 
 ```bash
 $ whoami
-niruxxdaboi — linux tinkerer, shell scripter, pixel nitpicker
+niruxxdaboi — linux tinkerer, shell scripter, pixel nitpicker, AI-assisted
 ```
 
 <img src="https://img.shields.io/badge/%F0%9F%93%8D_Somewhere_between_a_terminal_and_a_design_file-F1F3F4?style=for-the-badge&labelColor=F1F3F4&color=F1F3F4" alt="Location" />
@@ -49,7 +50,22 @@ niruxxdaboi — linux tinkerer, shell scripter, pixel nitpicker
 
 <img src="https://capsule-render.vercel.app/api?type=rect&color=0:EA4335,100:EA4335&height=3&section=header" width="100%" alt="" />
 
-## 📁 &nbsp;Albums &nbsp;·&nbsp; <sub><sup>4 albums</sup></sub>
+## 📊 &nbsp;Stats &nbsp;·&nbsp; <sub><sup>Auto-synced</sup></sub>
+
+<div align="center">
+
+<img src="https://github-readme-stats.vercel.app/api?username=niruxx&show_icons=true&hide_border=true&bg_color=F8F9FA&title_color=4285F4&icon_color=EA4335&text_color=3C4043&count_private=true" alt="GitHub Stats" height="165" />
+<img src="https://github-readme-stats.vercel.app/api/top-langs/?username=niruxx&layout=compact&hide_border=true&bg_color=F8F9FA&title_color=4285F4&text_color=3C4043&langs_count=8" alt="Top Languages" height="165" />
+
+<br>
+
+<img src="https://streak-stats.demolab.com?user=niruxx&hide_border=true&background=F8F9FA&ring=4285F4&fire=EA4335&currStreakLabel=4285F4&sideLabels=3C4043&currStreakNum=3C4043&sideNums=3C4043&dates=9AA0A6" alt="GitHub Streak" />
+
+</div>
+
+<img src="https://capsule-render.vercel.app/api?type=rect&color=0:FBBC04,100:FBBC04&height=3&section=header" width="100%" alt="" />
+
+## 📁 &nbsp;Albums &nbsp;·&nbsp; <sub><sup>5 albums</sup></sub>
 
 <table width="100%">
 <tr>
@@ -92,9 +108,20 @@ I notice bad spacing before I notice bad code.
 
 </td>
 </tr>
+<tr>
+<td width="100%" colspan="2" valign="top">
+
+<img src="https://img.shields.io/badge/AI--Assisted_Workflows-D97757?style=for-the-badge&logo=claude&logoColor=white" alt="AI-Assisted Workflows" />
+
+Pairing with Claude to plan, refactor, and ship — the ideas are still mine, the busywork isn't.
+
+<sub>`1 co-pilot` &nbsp;·&nbsp; `zero context switches`</sub>
+
+</td>
+</tr>
 </table>
 
-<img src="https://capsule-render.vercel.app/api?type=rect&color=0:FBBC04,100:FBBC04&height=3&section=header" width="100%" alt="" />
+<img src="https://capsule-render.vercel.app/api?type=rect&color=0:34A853,100:34A853&height=3&section=header" width="100%" alt="" />
 
 ## 🔍 &nbsp;Search by category
 
@@ -112,9 +139,15 @@ I notice bad spacing before I notice bad code.
 <img src="https://img.shields.io/badge/CSS3-F1F3F4?style=for-the-badge&logo=css3&logoColor=1572B6&labelColor=F1F3F4&color=F1F3F4" alt="CSS3" />
 <img src="https://img.shields.io/badge/Markdown-F1F3F4?style=for-the-badge&logo=markdown&logoColor=000000&labelColor=F1F3F4&color=F1F3F4" alt="Markdown" />
 
+<br>
+
+<img src="https://img.shields.io/badge/Claude-F1F3F4?style=for-the-badge&logo=claude&logoColor=D97757&labelColor=F1F3F4&color=F1F3F4" alt="Claude" />
+<img src="https://img.shields.io/badge/ChatGPT-F1F3F4?style=for-the-badge&logo=openai&logoColor=74AA9C&labelColor=F1F3F4&color=F1F3F4" alt="ChatGPT" />
+<img src="https://img.shields.io/badge/GitHub_Copilot-F1F3F4?style=for-the-badge&logo=githubcopilot&logoColor=000000&labelColor=F1F3F4&color=F1F3F4" alt="GitHub Copilot" />
+
 </div>
 
-<img src="https://capsule-render.vercel.app/api?type=rect&color=0:34A853,100:34A853&height=3&section=header" width="100%" alt="" />
+<img src="https://capsule-render.vercel.app/api?type=rect&color=0:4285F4,100:4285F4&height=3&section=header" width="100%" alt="" />
 
 ## 👥 &nbsp;Sharing &nbsp;·&nbsp; <sub><sup>You're invited</sup></sub>
 
@@ -149,5 +182,9 @@ $ echo "thanks for stopping by — let's build something cool together"
 <img src="https://img.shields.io/badge/%F0%9F%94%8D_Search-F1F3F4?style=for-the-badge&labelColor=F1F3F4&color=F1F3F4" alt="Search" />
 <img src="https://img.shields.io/badge/%F0%9F%91%A5_Sharing-F1F3F4?style=for-the-badge&labelColor=F1F3F4&color=F1F3F4" alt="Sharing" />
 <img src="https://img.shields.io/badge/%F0%9F%93%9A_Library-F1F3F4?style=for-the-badge&labelColor=F1F3F4&color=F1F3F4" alt="Library" />
+
+<br><br>
+
+<sub>🤖 &nbsp;This profile is drafted and iterated on with <a href="https://claude.com/claude-code">Claude Code</a>.</sub>
 
 </div>
