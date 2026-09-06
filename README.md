@@ -113,7 +113,7 @@ I notice bad spacing before I notice bad code.
 
 <img src="https://img.shields.io/badge/AI--Assisted_Workflows-D97757?style=for-the-badge&logo=claude&logoColor=white" alt="AI-Assisted Workflows" />
 
-Pairing with Claude to plan, refactor, and ship — the ideas are still mine, the busywork isn't.
+Pairing with Claude.
 
 <sub>`1 co-pilot` &nbsp;·&nbsp; `zero context switches`</sub>
 
@@ -184,7 +184,5 @@ $ echo "thanks for stopping by — let's build something cool together"
 <img src="https://img.shields.io/badge/%F0%9F%93%9A_Library-F1F3F4?style=for-the-badge&labelColor=F1F3F4&color=F1F3F4" alt="Library" />
 
 <br><br>
-
-<sub>🤖 &nbsp;This profile is drafted and iterated on with <a href="https://claude.com/claude-code">Claude Code</a>.</sub>
 
 </div>
